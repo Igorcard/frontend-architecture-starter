@@ -1,0 +1,28 @@
+import { cx } from '@ui/variants'
+import type { ReactNode } from 'react'
+
+export function FormField({
+  label,
+  htmlFor,
+  error,
+  children,
+}: {
+  label: string
+  htmlFor: string
+  error?: string
+  children: ReactNode
+}) {
+  return (
+    <div className="flex flex-col gap-1.5" data-slot="form-field">
+      <label htmlFor={htmlFor} className="text-sm font-medium text-zinc-800">
+        {label}
+      </label>
+      {children}
+      {error ? <p className="text-sm text-red-600">{error}</p> : null}
+    </div>
+  )
+}
+
+export function FormDescription({ children }: { children: ReactNode }) {
+  return <p className={cx('text-sm text-zinc-500')}>{children}</p>
+}
