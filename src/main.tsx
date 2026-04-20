@@ -21,8 +21,12 @@ declare module '@tanstack/react-router' {
 
 async function bootstrap() {
   if (import.meta.env.DEV && import.meta.env.VITE_MSW !== 'false') {
-    const { worker } = await import('@mocks/browser')
-    await worker.start({ onUnhandledRequest: 'bypass' })
+    try {
+      const { worker } = await import('@mocks/browser')
+      await worker.start({ onUnhandledRequest: 'bypass' })
+    } catch (err) {
+      console.error('[MSW] Failed to start mock API. Is public/mockServiceWorker.js present?', err)
+    }
   }
 
   createRoot(document.getElementById('root')!).render(

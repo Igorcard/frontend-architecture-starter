@@ -62,5 +62,10 @@
     "vite": "^7.0.0",
     "vitest": "^4.0.0",
     "vitest-browser-react": "^2.0.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
