@@ -14,7 +14,7 @@ export function FormField({
 }) {
   return (
     <div className="flex flex-col gap-1.5" data-slot="form-field">
-      <label htmlFor={htmlFor} className="text-sm font-medium text-zinc-800">
+      <label htmlFor={htmlFor} className="text-sm font-medium text-slate-800">
         {label}
       </label>
       {children}
@@ -24,5 +24,5 @@ export function FormField({
 }
 
 export function FormDescription({ children }: { children: ReactNode }) {
-  return <p className={cx('text-sm text-zinc-500')}>{children}</p>
+  return <p className={cx('text-sm text-slate-500')}>{children}</p>
 }

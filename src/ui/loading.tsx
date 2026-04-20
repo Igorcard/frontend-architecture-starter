@@ -4,7 +4,7 @@ export function Loading({ className }: { className?: string }) {
   return (
     <div
       className={cx(
-        'size-6 animate-spin rounded-full border-2 border-zinc-200 border-t-zinc-900',
+        'size-6 animate-spin rounded-full border-2 border-teal-200 border-t-teal-700',
         className,
       )}
       data-slot="loading"

@@ -1,9 +1,9 @@
 import { cva } from '@ui/variants'
 
 export const dataGridToolbarVariants = cva(
-  'flex flex-col gap-3 border-b border-zinc-200 bg-zinc-50/80 px-3 py-2 sm:flex-row sm:items-center sm:justify-between',
+  'flex flex-col gap-3 border-b border-slate-200/80 bg-gradient-to-r from-white via-slate-50/90 to-teal-50/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between',
 )
 
 export const dataGridFooterVariants = cva(
-  'flex items-center justify-between border-t border-zinc-200 px-3 py-2 text-sm text-zinc-600',
+  'flex items-center justify-between border-t border-slate-100 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-600',
 )

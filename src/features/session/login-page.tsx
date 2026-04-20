@@ -24,8 +24,10 @@ export function LoginPage() {
 
   return (
     <div>
-      <h1 className="text-xl font-semibold text-zinc-900">Sign in</h1>
-      <p className="mt-1 text-sm text-zinc-600">Use any email and password (mock API).</p>
+      <h1 className="font-display text-2xl font-semibold tracking-tight text-slate-900">Entrar</h1>
+      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+        Use qualquer e-mail e senha — a API é mock e aceita qualquer combinação.
+      </p>
       <form
         className="mt-6 space-y-4"
         onSubmit={(e) => {
@@ -60,19 +62,19 @@ export function LoginPage() {
           )}
         </form.Field>
         <PatternFormActions>
-          <Button type="submit" variant="primary">
-            Continue
+          <Button type="submit" variant="primary" className="w-full sm:w-auto">
+            Continuar
           </Button>
         </PatternFormActions>
       </form>
-      <p className="mt-4 text-center text-sm text-zinc-600">
-        No account?{' '}
+      <p className="mt-6 text-center text-sm text-slate-600">
+        Não tem conta?{' '}
         <Link
           to="/register"
           search={{ redirect: undefined }}
-          className="font-medium text-zinc-900 underline"
+          className="font-semibold text-teal-800 underline decoration-teal-600/40 underline-offset-2 hover:text-teal-900"
         >
-          Register
+          Criar conta
         </Link>
       </p>
     </div>

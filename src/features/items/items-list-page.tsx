@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { itemsQueries } from '@core/queries'
 import type { Item } from '@core/api/items'
 import { DataGrid } from '@pattern/data-grid'
+import { PageHeader } from '@pattern/page-header'
 import { Button } from '@ui/button'
 import { Input } from '@ui/input'
 import type { ColumnDef } from '@tanstack/react-table'
@@ -21,13 +22,13 @@ export function ItemsListPage() {
     () => [
       {
         accessorKey: 'title',
-        header: 'Title',
+        header: 'Título',
         cell: ({ row }) => (
           <Link
             to="/items/$itemId"
             params={{ itemId: row.original.id }}
             search={emptyItemsSearch}
-            className="font-medium text-zinc-900 underline-offset-2 hover:underline"
+            className="font-medium text-teal-900 underline decoration-teal-600/30 underline-offset-2 hover:text-teal-950 hover:decoration-teal-700"
           >
             {row.original.title}
           </Link>
@@ -35,7 +36,7 @@ export function ItemsListPage() {
       },
       {
         accessorKey: 'updatedAt',
-        header: 'Updated',
+        header: 'Atualizado',
         cell: ({ getValue }) => new Date(String(getValue())).toLocaleString(),
       },
     ],
@@ -43,9 +44,14 @@ export function ItemsListPage() {
   )
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Catálogo"
+        title="Itens"
+        description="Grade com TanStack Table: filtre por título ou descrição (Enter no campo) e abra o detalhe pelo link."
+      />
       <DataGrid
-        title="Items"
+        title="Lista"
         data={listQuery.data ?? []}
         columns={columns}
         isLoading={listQuery.isLoading}
@@ -60,13 +66,13 @@ export function ItemsListPage() {
               })
             }
           >
-            New item
+            Novo item
           </Button>
         }
         filters={
           <div className="flex max-w-md gap-2">
             <Input
-              placeholder="Filter…"
+              placeholder="Filtrar…"
               defaultValue={search.q ?? ''}
               onKeyDown={(e) => {
                 if (e.key !== 'Enter') return

@@ -15,7 +15,7 @@ export function DataGridHeader({
     <div className={cx(dataGridToolbarVariants())} data-slot="data-grid-header">
       <div className="flex min-w-0 flex-col gap-1">
         {title ? (
-          <h2 className="text-base font-semibold text-zinc-900">{title}</h2>
+          <h2 className="font-display text-lg font-semibold tracking-tight text-slate-900">{title}</h2>
         ) : null}
         {filters}
       </div>

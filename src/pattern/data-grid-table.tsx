@@ -21,8 +21,13 @@ export function DataGridTable<T>({ data, columns, isLoading }: DataGridTableProp
 
   if (isLoading) {
     return (
-      <div className="rounded-lg border border-zinc-200 p-8 text-center text-sm text-zinc-500">
-        Loading…
+      <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-6 py-14 text-center">
+        <div
+          className="size-8 animate-spin rounded-full border-2 border-teal-200 border-t-teal-700"
+          role="status"
+          aria-label="Carregando"
+        />
+        <p className="text-sm font-medium text-slate-600">Carregando dados…</p>
       </div>
     )
   }

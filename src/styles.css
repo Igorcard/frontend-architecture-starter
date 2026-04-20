@@ -1,7 +1,36 @@
 @import 'tailwindcss';
 
 @layer base {
+  :root {
+    --app-bg: #f0f4f3;
+    --app-accent: #0f766e;
+    --app-accent-soft: rgba(13, 148, 136, 0.12);
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
-    @apply min-h-dvh bg-zinc-50 text-zinc-900 antialiased;
+    @apply min-h-dvh text-slate-800 antialiased;
+    font-family:
+      'Plus Jakarta Sans',
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+    background-color: var(--app-bg);
+    background-image:
+      radial-gradient(ellipse 100% 80% at 100% 0%, rgb(204 251 241 / 0.55), transparent 55%),
+      radial-gradient(ellipse 90% 70% at 0% 100%, rgb(199 210 254 / 0.4), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgb(167 243 208 / 0.25), transparent 45%);
+  }
+
+  .font-display {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+  }
+
+  ::selection {
+    background-color: var(--app-accent-soft);
+    color: rgb(15 23 42);
   }
 }

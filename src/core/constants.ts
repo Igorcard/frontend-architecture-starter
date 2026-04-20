@@ -1,1 +1,1 @@
-export const APP_NAME = 'Architecture starter'
+export const APP_NAME = 'Workbench'

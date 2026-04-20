@@ -27,8 +27,10 @@ export function RegisterPage() {
 
   return (
     <div>
-      <h1 className="text-xl font-semibold text-zinc-900">Create account</h1>
-      <p className="mt-1 text-sm text-zinc-600">Mock registration — any values work.</p>
+      <h1 className="font-display text-2xl font-semibold tracking-tight text-slate-900">Criar conta</h1>
+      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+        Registro mock — qualquer e-mail e senha funcionam e você já entra logado.
+      </p>
       <form
         className="mt-6 space-y-4"
         onSubmit={(e) => {
@@ -63,19 +65,19 @@ export function RegisterPage() {
           )}
         </form.Field>
         <PatternFormActions>
-          <Button type="submit" variant="primary">
-            Register
+          <Button type="submit" variant="primary" className="w-full sm:w-auto">
+            Registrar
           </Button>
         </PatternFormActions>
       </form>
-      <p className="mt-4 text-center text-sm text-zinc-600">
-        Already have an account?{' '}
+      <p className="mt-6 text-center text-sm text-slate-600">
+        Já tem conta?{' '}
         <Link
           to="/login"
           search={{ redirect: undefined }}
-          className="font-medium text-zinc-900 underline"
+          className="font-semibold text-teal-800 underline decoration-teal-600/40 underline-offset-2 hover:text-teal-900"
         >
-          Sign in
+          Entrar
         </Link>
       </p>
     </div>

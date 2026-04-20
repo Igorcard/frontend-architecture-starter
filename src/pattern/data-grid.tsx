@@ -26,7 +26,7 @@ export function DataGrid<T>({
   const tableProps: DataGridTableProps<T> = { data, columns, isLoading }
   return (
     <div
-      className="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm"
+      className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 shadow-xl shadow-slate-900/5 ring-1 ring-slate-900/5 backdrop-blur-sm"
       data-slot="data-grid"
     >
       <DataGridHeader title={title} actions={actions} filters={filters} />

@@ -34,7 +34,7 @@ export function ItemForm({
       <form.Field name="title">
         {(field) => (
           <PatternTextInput
-            label="Title"
+            label="Título"
             id="item-title"
             value={field.state.value}
             onChange={(val) => field.handleChange(val)}
@@ -50,7 +50,7 @@ export function ItemForm({
       <form.Field name="description">
         {(field) => (
           <PatternTextareaInput
-            label="Description"
+            label="Descrição"
             id="item-description"
             value={field.state.value}
             onChange={(val) => field.handleChange(val)}
