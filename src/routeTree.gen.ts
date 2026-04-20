@@ -17,6 +17,7 @@ import { Route as MainItemsRouteImport } from './routes/_main.items'
 import { Route as MainDashboardRouteImport } from './routes/_main.dashboard'
 import { Route as AuthRegisterRouteImport } from './routes/_auth.register'
 import { Route as AuthLoginRouteImport } from './routes/_auth.login'
+import { Route as MainItemsIndexRouteImport } from './routes/_main.items.index'
 import { Route as MainItemsNewRouteImport } from './routes/_main.items.new'
 import { Route as MainItemsItemIdRouteImport } from './routes/_main.items.$itemId'
 
@@ -58,6 +59,11 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AuthRoute,
 } as any)
+const MainItemsIndexRoute = MainItemsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MainItemsRoute,
+} as any)
 const MainItemsNewRoute = MainItemsNewRouteImport.update({
   id: '/new',
   path: '/new',
@@ -78,16 +84,17 @@ export interface FileRoutesByFullPath {
   '/settings': typeof MainSettingsRoute
   '/items/$itemId': typeof MainItemsItemIdRoute
   '/items/new': typeof MainItemsNewRoute
+  '/items/': typeof MainItemsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof AuthLoginRoute
   '/register': typeof AuthRegisterRoute
   '/dashboard': typeof MainDashboardRoute
-  '/items': typeof MainItemsRouteWithChildren
   '/settings': typeof MainSettingsRoute
   '/items/$itemId': typeof MainItemsItemIdRoute
   '/items/new': typeof MainItemsNewRoute
+  '/items': typeof MainItemsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -101,6 +108,7 @@ export interface FileRoutesById {
   '/_main/settings': typeof MainSettingsRoute
   '/_main/items/$itemId': typeof MainItemsItemIdRoute
   '/_main/items/new': typeof MainItemsNewRoute
+  '/_main/items/': typeof MainItemsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -113,16 +121,17 @@ export interface FileRouteTypes {
     | '/settings'
     | '/items/$itemId'
     | '/items/new'
+    | '/items/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
     | '/register'
     | '/dashboard'
-    | '/items'
     | '/settings'
     | '/items/$itemId'
     | '/items/new'
+    | '/items'
   id:
     | '__root__'
     | '/'
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/_main/settings'
     | '/_main/items/$itemId'
     | '/_main/items/new'
+    | '/_main/items/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -201,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_main/items/': {
+      id: '/_main/items/'
+      path: '/'
+      fullPath: '/items/'
+      preLoaderRoute: typeof MainItemsIndexRouteImport
+      parentRoute: typeof MainItemsRoute
+    }
     '/_main/items/new': {
       id: '/_main/items/new'
       path: '/new'
@@ -233,11 +250,13 @@ const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 interface MainItemsRouteChildren {
   MainItemsItemIdRoute: typeof MainItemsItemIdRoute
   MainItemsNewRoute: typeof MainItemsNewRoute
+  MainItemsIndexRoute: typeof MainItemsIndexRoute
 }
 
 const MainItemsRouteChildren: MainItemsRouteChildren = {
   MainItemsItemIdRoute: MainItemsItemIdRoute,
   MainItemsNewRoute: MainItemsNewRoute,
+  MainItemsIndexRoute: MainItemsIndexRoute,
 }
 
 const MainItemsRouteWithChildren = MainItemsRoute._addFileChildren(

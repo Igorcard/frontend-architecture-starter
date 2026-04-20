@@ -8,7 +8,7 @@ import { Input } from '@ui/input'
 import type { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 
-const itemsRouteApi = getRouteApi('/_main/items')
+const itemsRouteApi = getRouteApi('/_main/items/')
 
 const emptyItemsSearch = { q: undefined as string | undefined }
 
