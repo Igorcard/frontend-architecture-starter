@@ -3,7 +3,8 @@ import { useAppForm } from '@pattern/form.hooks'
 import { PatternFormActions, PatternTextInput } from '@pattern/form'
 import { registerRequest } from '@core/api/auth'
 import { useSessionStore } from '@core/session-store'
-import { Button } from '@ui/button'
+import { buttonVariants } from '@ui/button.variants'
+import { cx } from '@ui/variants'
 
 const registerRouteApi = getRouteApi('/_auth/register')
 
@@ -65,9 +66,12 @@ export function RegisterPage() {
           )}
         </form.Field>
         <PatternFormActions>
-          <Button type="submit" variant="primary" className="w-full sm:w-auto">
+          <button
+            type="submit"
+            className={cx(buttonVariants({ variant: 'primary', size: 'md' }), 'w-full sm:w-auto')}
+          >
             Registrar
-          </Button>
+          </button>
         </PatternFormActions>
       </form>
       <p className="mt-6 text-center text-sm text-slate-600">

@@ -18,8 +18,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setSession(res.token, res.user)
       },
       logout: async () => {
-        await logoutRequest()
-        clearSession()
+        try {
+          await logoutRequest()
+        } catch {
+          // Sem rede / MSW off / 4xx: ainda assim encerramos a sessão local.
+        } finally {
+          clearSession()
+        }
       },
     }),
     [token, user, setSession, clearSession],

@@ -2,7 +2,8 @@ import { getRouteApi, useNavigate } from '@tanstack/react-router'
 import { useAppForm } from '@pattern/form.hooks'
 import { PatternFormActions, PatternTextInput } from '@pattern/form'
 import { useAuth } from '@core/hooks'
-import { Button } from '@ui/button'
+import { buttonVariants } from '@ui/button.variants'
+import { cx } from '@ui/variants'
 import { Link } from '@tanstack/react-router'
 
 const loginRouteApi = getRouteApi('/_auth/login')
@@ -62,9 +63,12 @@ export function LoginPage() {
           )}
         </form.Field>
         <PatternFormActions>
-          <Button type="submit" variant="primary" className="w-full sm:w-auto">
+          <button
+            type="submit"
+            className={cx(buttonVariants({ variant: 'primary', size: 'md' }), 'w-full sm:w-auto')}
+          >
             Continuar
-          </Button>
+          </button>
         </PatternFormActions>
       </form>
       <p className="mt-6 text-center text-sm text-slate-600">

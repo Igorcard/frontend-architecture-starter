@@ -3,7 +3,8 @@ import { useAppForm } from '@pattern/form.hooks'
 import { PatternFormActions, PatternTextareaInput, PatternTextInput } from '@pattern/form'
 import type { ItemUpsertForm } from '@features/items/schemas'
 import { itemUpsertSchema } from '@features/items/schemas'
-import { Button } from '@ui/button'
+import { buttonVariants } from '@ui/button.variants'
+import { cx } from '@ui/variants'
 
 export function ItemForm({
   defaultValues,
@@ -64,9 +65,9 @@ export function ItemForm({
         )}
       </form.Field>
       <PatternFormActions>
-        <Button type="submit" variant="primary">
+        <button type="submit" className={cx(buttonVariants({ variant: 'primary', size: 'md' }))}>
           {submitLabel}
-        </Button>
+        </button>
       </PatternFormActions>
     </form>
   )

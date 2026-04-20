@@ -1,4 +1,4 @@
-import { Link, useRouterState } from '@tanstack/react-router'
+import { Link, useNavigate, useRouterState } from '@tanstack/react-router'
 import { APP_NAME } from '@core/constants'
 import { useAuth } from '@core/hooks'
 import { useAppStore } from '@core/app-store'
@@ -8,7 +8,13 @@ import type { ReactNode } from 'react'
 
 export function MainLayout({ children }: { children: ReactNode }) {
   const { logout } = useAuth()
+  const navigate = useNavigate()
   const pathname = useRouterState({ select: (s) => s.location.pathname })
+
+  async function handleLogout() {
+    await logout()
+    await navigate({ to: '/login', search: { redirect: undefined } })
+  }
   const sidebarCollapsed = useAppStore((s) => s.sidebarCollapsed)
   const setSidebarCollapsed = useAppStore((s) => s.setSidebarCollapsed)
 
@@ -93,7 +99,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
             variant="ghost"
             size="sm"
             className="w-full justify-start gap-2 border border-transparent text-slate-400 hover:border-slate-700 hover:bg-slate-800/80 hover:text-white"
-            onClick={() => void logout()}
+            onClick={() => void handleLogout()}
           >
             <IconLogout className="size-4 shrink-0 opacity-80" />
             {!sidebarCollapsed ? <span>Sair</span> : <span className="sr-only">Sair</span>}
@@ -103,7 +109,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <header className="flex h-14 shrink-0 items-center justify-between border-b border-slate-200/60 bg-white/40 px-4 backdrop-blur-md md:hidden">
           <span className="text-sm font-semibold text-slate-800">{APP_NAME}</span>
-          <Button type="button" variant="secondary" size="sm" onClick={() => void logout()}>
+          <Button type="button" variant="secondary" size="sm" onClick={() => void handleLogout()}>
             Sair
           </Button>
         </header>
